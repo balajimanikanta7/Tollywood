@@ -8,7 +8,7 @@ public class DataRepository {
     private static final List<Movie> MOVIES = new ArrayList<>();
 
     static {
-        // Heroes
+        // HERO LIST
         HEROES.add(new Hero(1, "Ram Charan", "Tier 1", "/images/heroes/ramcharan.jpg"));
         HEROES.add(new Hero(2, "Chiranjeevi", "Tier 1", "/images/heroes/chiranjeevi.jpg"));
         HEROES.add(new Hero(3, "Balakrishna", "Tier 1", "/images/heroes/balakrishna.jpg"));
@@ -25,25 +25,17 @@ public class DataRepository {
         HEROES.add(new Hero(14, "Ravi Teja", "Tier 1", "/images/heroes/raviteja.jpg"));
         HEROES.add(new Hero(15, "Allari Naresh", "Tier 3", "/images/heroes/allarinaresh.jpg"));
 
-        // SAMPLE movies – you will extend this with full filmography
+        // SAMPLE MOVIES (you will add full list)
         MOVIES.add(new Movie(1, 7, "Pushpa: The Rise",
                 "2021-12-17", "₹360 Cr WW", "Blockbuster",
                 "Amazon Prime Video", "/images/posters/pushpa1.jpg"));
 
-        MOVIES.add(new Movie(2, 7, "Ala Vaikunthapurramuloo",
-                "2020-01-12", "₹280 Cr WW", "Blockbuster",
-                "Sun NXT", "/images/posters/ala_vaikunthapurramuloo.jpg"));
-
-        MOVIES.add(new Movie(3, 8, "Salaar: Part 1 – Ceasefire",
+        MOVIES.add(new Movie(2, 8, "Salaar",
                 "2023-12-22", "₹700 Cr WW", "Blockbuster",
                 "Netflix", "/images/posters/salaar.jpg"));
-
-        // …add all movies for each hero from career start to June 2026
     }
 
-    public static List<Hero> getHeroes() {
-        return HEROES;
-    }
+    public static List<Hero> getHeroes() { return HEROES; }
 
     public static Optional<Hero> getHeroById(int id) {
         return HEROES.stream().filter(h -> h.getId() == id).findFirst();
@@ -52,9 +44,7 @@ public class DataRepository {
     public static List<Movie> getMoviesByHeroId(int heroId) {
         List<Movie> result = new ArrayList<>();
         for (Movie m : MOVIES) {
-            if (m.getHeroId() == heroId) {
-                result.add(m);
-            }
+            if (m.getHeroId() == heroId) result.add(m);
         }
         return result;
     }
