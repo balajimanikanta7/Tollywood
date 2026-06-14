@@ -50,8 +50,8 @@ public class HeroesServlet extends HttpServlet {
             out.println("</style>");
             out.println("</head><body><div class='container'>");
 
-            out.println("<h1>Tollywood Heroes – Movies</h1>");
-            out.println("<p>Select a hero to see all their movies with release date, collections, verdict & OTT platform.</p>");
+            out.println("<h1>Tollywood Heroes – Complete Filmography</h1>");
+            out.println("<p>Select a hero to view all their movies.</p>");
 
             out.println("<div class='hero-grid'>");
             for (Hero h : heroes) {
@@ -59,28 +59,25 @@ public class HeroesServlet extends HttpServlet {
                 out.println("<a href='heroes?heroId=" + h.getId() + "'>");
                 out.println("<img src='" + h.getPhotoUrl() + "' alt='" + h.getName() + "'/>");
                 out.println("</a>");
-                out.println("<div>" + h.getName() + "<br/><span style='font-size:12px;color:#ccc;'>"
-                        + h.getTier() + "</span></div>");
+                out.println("<div>" + h.getName() + "</div>");
                 out.println("</div>");
             }
             out.println("</div>");
 
             if (selectedHero != null) {
-                out.println("<h2>" + selectedHero.getName() + " – Filmography</h2>");
+                out.println("<h2>" + selectedHero.getName() + " – Movies</h2>");
                 out.println("<div class='movies-grid'>");
                 for (Movie m : movies) {
                     out.println("<div class='movie-card'>");
-                    out.println("<img src='" + m.getPosterUrl() + "' alt='" + m.getTitle() + " poster'/>");
+                    out.println("<img src='" + m.getPosterUrl() + "'/>");
                     out.println("<div class='title'>" + m.getTitle() + "</div>");
-                    out.println("<div class='meta'>Release Date: " + m.getReleaseDate() + "</div>");
+                    out.println("<div class='meta'>Release: " + m.getReleaseDate() + "</div>");
                     out.println("<div class='meta'>Box Office: " + m.getBoxOffice() + "</div>");
                     out.println("<div class='meta'>Verdict: " + m.getVerdict() + "</div>");
-                    out.println("<div class='meta'>Streaming on: " + m.getOttPlatform() + "</div>");
+                    out.println("<div class='meta'>OTT: " + m.getOttPlatform() + "</div>");
                     out.println("</div>");
                 }
                 out.println("</div>");
-            } else {
-                out.println("<p>Click any hero above to view their movies.</p>");
             }
 
             out.println("</div></body></html>");
